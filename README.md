@@ -30,26 +30,26 @@ A web application that seamlessly bridges the gap between transliteration and tr
 
 ## Use Cases
 
-Learning and exploring new languages by transliterating and translating text.
+1. Learning and exploring new languages by transliterating and translating text.
 
-Enhancing communication across different language scripts and meanings.
+2. Enhancing communication across different language scripts and meanings.
 
-Supporting multilingual web and app interfaces.
+3. Supporting multilingual web and app interfaces.
 
 ## How to Use
 
-Clone the repository and set up the Flask server.
+1. Clone the repository and set up the Flask server.
 
-Launch the frontend application in your browser.
+2. Launch the frontend application in your browser.
 
-Enter Romanized text, select languages, and view the translated output.
+3. Enter Romanized text, select languages, and view the translated output.
 
 ## Future Enhancements
 
-Expand the range of supported languages.
+1. Expand the range of supported languages.
 
-Integrate voice input and output for speech-to-text and text-to-speech capabilities.
+2. Integrate voice input and output for speech-to-text and text-to-speech capabilities.
 
-Enhance AI models for better contextual translations.
+3. Enhance AI models for better contextual translations.
 
-This project exemplifies the integration of advanced transliteration and translation techniques with a focus on multilingual accessibility and ease of use.
+4. This project exemplifies the integration of advanced transliteration and translation techniques with a focus on multilingual accessibility and ease of use.

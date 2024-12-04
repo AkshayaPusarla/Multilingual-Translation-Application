@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Translator</title>
+    <style>
+        /* Responsive design */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .translator {
+            width: 80%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        select, textarea, button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="translator">
+        <h2>Language Translator</h2>
+        <select id="sourceLang">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="fr">French</option>
+            <option value="fr">Spanish</option>
+            <option value="fr">German</option>
+            <option value="fr">Italian</option>
+            <option value="fr">Russian</option>
+            <option value="fr">Chinese</option>
+            <option value="fr">Arabic</option>
+            <option value="fr">Bengali</option>
+            <option value="fr">Japanese</option>
+            <option value="fr">Korean</option>
+            <option value="fr">Portuguese</option>
+            <option value="fr">Dutch</option>
+            <option value="fr">Turkish</option>
+            <option value="fr">Greek</option>
+            <option value="fr">Polish</option>
+            <option value="fr">Tamil</option>
+            <option value="fr">Telugu</option>
+            <option value="fr">Malayalam</option>
+            <option value="fr">Gujarati</option>
+            <option value="fr">Punjabi</option>
+            <option value="fr">Urdu</option>
+            <option value="fr">Thai</option>
+            
+            <!-- Add more language options -->
+        </select>
+        <select id="targetLang">
+            <option value="hi">Hindi</option>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="fr">Spanish</option>
+            <option value="fr">German</option>
+            <option value="fr">Italian</option>
+            <option value="fr">Russian</option>
+            <option value="fr">Chinese</option>
+            <option value="fr">Arabic</option>
+            <option value="fr">Bengali</option>
+            <option value="fr">Japanese</option>
+            <option value="fr">Korean</option>
+            <option value="fr">Portuguese</option>
+            <option value="fr">Dutch</option>
+            <option value="fr">Turkish</option>
+            <option value="fr">Greek</option>
+            <option value="fr">Polish</option>
+            <option value="fr">Tamil</option>
+            <option value="fr">Telugu</option>
+            <option value="fr">Malayalam</option>
+            <option value="fr">Gujarati</option>
+            <option value="fr">Punjabi</option>
+            <option value="fr">Urdu</option>
+            <option value="fr">Thai</option>
+            <!-- Add more language options -->
+        </select>
+        <textarea id="inputText" placeholder="Enter text to translate"></textarea>
+        <button onclick="translateText()">Translate</button>
+        <textarea id="outputText" readonly placeholder="Translated text will appear here"></textarea>
+    </div>
+
+        <script>
+            async function translateText() {
+              const sourceLang = document.getElementById('sourceLang').value;
+              const targetLang = document.getElementById('targetLang').value;
+              const inputText = document.getElementById('inputText').value;
+          
+              if (!inputText.trim()) {
+                alert('Please enter text to translate!');
+                return;
+              }
+          
+              try {
+                // Replace the URL with your Flask server URL if hosted on a different server
+                const response = await fetch('http://127.0.0.1:5000/translate', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    source_lang: sourceLang,
+                    target_lang: targetLang,
+                    text: inputText,
+                  }),
+                });
+          
+                if (response.ok) {
+                  const data = await response.json();
+                  document.getElementById('outputText').value = data.translated_text;
+                } else {
+                  const error = await response.json();
+                  alert(`Error: ${error.error}`);
+                }
+              } catch (err) {
+                alert(`Something went wrong: ${err.message}`);
+              }
+            }
+          </script>
+
+
+</body>
+</html>
